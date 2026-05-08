@@ -8,20 +8,18 @@ class Solution:
             count[i]+=1
         
         def dfs(node):
+            if ans[node]:
+                return [node]+ans[node]
             temp = []
             for i in graph[node]:
                 temp+=dfs(i)
-            
-            ans[node] = temp
+            temp = set(temp)
+            temp = list(temp)
+            ans[node] = sorted(temp)
             return temp+[node]
         
         for i in range(n):
             if count[i] == 0:
                 dfs(i)
-
-        for i in range(n):
-            ans[i] = set(ans[i])
-            ans[i] = list(ans[i])
-            ans[i] = sorted(ans[i])
 
         return ans
