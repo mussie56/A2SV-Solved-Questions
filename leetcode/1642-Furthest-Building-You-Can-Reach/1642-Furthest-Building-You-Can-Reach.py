@@ -18,5 +18,6 @@ class Solution:
                     summ+=diff
             if summ > bricks:
                 return i-1
+                # break
 
-        return i
+        return i#-1
